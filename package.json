@@ -4,7 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --content-base src",
+    "init": "mkdir dist",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean && npm run init",
+    "test": "jest",
+    "test:watch": "npm run test -- --watchAll",
+    "build": "NODE_ENV=production webpack && cp src/index.html dist/index.html"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
   },
   "author": "@speakingcode",
   "license": "Beerware",
