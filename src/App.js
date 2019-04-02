@@ -13,16 +13,19 @@ const App = ({
   submitMessage
 }) =>
   <div
-    style={
-      {margin: 'auto', width: '40%', borderWidth: '1px', borderColor: '#000', borderStyle: 'solid'}
-    }
+    className='chat-area'
   >
 
-    <div style={{height: '220px', width: '100%', overflowY: 'auto'}}>
+    <div
+      className='message-area'
+    >
       {messages.map(msg => (
         <div>{msg.message}</div>
       ))}
     </div>
+    <div
+      className='input-area'
+    >
     <input
       placeholder="username"
       onChange={(e) => {setUsername(e.target.value)}}
@@ -35,6 +38,7 @@ const App = ({
     <button onClick={() => {submitMessage(messageInput)}}>
       Send
     </button>
+  </div>
   </div>
 
 const mapStateToProps = state =>({
