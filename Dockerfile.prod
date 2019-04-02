@@ -1,0 +1,11 @@
+#use 'as' syntax to create temporary intermediate image
+FROM node:latest as builder
+WORKDIR /memdevchat-client
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+#prod runs built app on nginx webserver
+FROM nginx:alpine
+COPY --from=builder  /memdevchat-client/dist /usr/share/nginx/html
