@@ -41,16 +41,28 @@ socket.on('SET_NEW_CLIENT_STATE', newState => {
 
 
 const App = ({state}) =>
-  <div>
-    <h1>App</h1>
+  <div
+    style={
+      {margin: 'auto', width: '40%', borderWidth: '1px', borderColor: '#000', borderStyle: 'solid'}
+    }
+  >
 
+    <div style={{height: '220px', width: '100%', overflowY: 'auto'}}>
+    {state.messages.map(msg => (
+        <div>{msg.message}</div>
+    ))}
+      </div>
+      <input
+        placeholder="username"
+        onChange={(e) => {store.dispatch({type: 'SET_USERNAME', username: e.target.value})}}
+      />
     <input
-      value={state}
+      value={state.messageInput}
       type="text"
-      onChange={(e) => {store.dispatch({type: 'SET_INPUT', payload: e.target.value})}}
+      onChange={(e) => {store.dispatch({type: 'SET_MESSAGE_INPUT', messageInput: e.target.value})}}
     />
-    <button onClick={() => {store.dispatch({type: 'SUBMIT_INPUT', payload: state})}}>
-      Send action!
+    <button onClick={() => {store.dispatch({type: 'SUBMIT_MESSAGE', message: state.messageInput})}}>
+      Send
     </button>
   </div>
 
