@@ -1,18 +1,19 @@
 html, body{
     height: 100%;
+    width: 100%;
 }
 
 body {
   background-image: url('./bg.jpg');
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   font-family: "Courier New", "monospace";
-  color: #ffff00
+  color: #ffff00;
 }
 
 .chat-area {
   margin-top: 8vh;
-  height: 80vh;
+  height: 70vh;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
@@ -24,12 +25,13 @@ body {
   border-color: #000;
   border-style: solid;
   background-color: #000044C9;
-  height: 90%;
+  height: 70%;
   width: 100%;
   overflow-y: auto;
 }
 
 .input-area {
+  display: block;
   width: 100%;
 }
 
@@ -41,4 +43,24 @@ input, button {
   border-style: solid;
   background-color: #000044C9;
   color: #fff;
+}
+
+.fill-input-span {
+  display: block;
+  overflow: hidden;
+}
+
+#username-input {
+  float: left;
+  margin-right: 10px;
+}
+
+#message-input {
+  width: 100%;
+  margin-right: 10px;
+}
+
+#submit-message-button {
+  float: right;
+  margin-left: 10px;
 }
