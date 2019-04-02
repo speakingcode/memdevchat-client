@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+
+  memdevchat-client:
+    image: memdevchat-client-dev:latest
+    volumes:
+      - ./src:/memdevchat-client/src
+    command: npm start
+    ports:
+      - "8080:8080"
+    depends_on:
+      - memdevchat-server
+
+  memdevchat-server:
+    image: memdevchat-server:latest
+    volumes:
+      - ../memdevchat-server/src:/memdevchat-server/src
+    working_dir: /memdevchat-server
+    ports:
+      - "8090:8090"
+    command: npm start
